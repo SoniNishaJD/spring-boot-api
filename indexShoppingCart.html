@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Jewellery Shop Management System</title>
+</head>
+<body>
+
+	<div class="container my-2">
+		<h1>Shopping cart List</h1>
+
+		<a th:href="@{/showNewShoppingCart}"
+			class="btn btn-primary btn-sm mb-3"> Add Shopping Cart </a>
+
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Shopping Cart User Id</th>
+					<th>Shopping Cart Product Id</th>
+					<th>Shopping Cart Qty</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="shopping_cart : ${listShoppingCart}">
+					<td th:text="${shopping_cart.user_id}"></td>
+					<td th:text="${shopping_cart.product_id}"></td>
+					<td th:text="${shopping_cart.gty}"></td>
+					<td><a th:href="@{/showFormShoppingCartUpdate/{id}(id=${shopping_cart.id})}"
+						class="btn btn-primary">Update</a> <a
+						th:href="@{/deleteShoppingCart/{id}(id=${shopping_cart.id})}"
+						class="btn btn-danger">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
